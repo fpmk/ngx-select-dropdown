@@ -171,7 +171,7 @@ export class NgxSelectDropdownComponent
    * if many instances are there, this detects if clicked inside
    * this instance
    */
-  @HostListener("click")
+  @HostListener('click', ['$event'])
   public clickInsideComponent() {
     this.clickedInside = true;
   }
@@ -188,22 +188,22 @@ export class NgxSelectDropdownComponent
   /**
    * Event listener for the blur event to hide the dropdown
    */
-  @HostListener("blur") public blur() {
-    if(!this.insideKeyPress){
-      this.toggleDropdown = false;
-    }
-  }
+  // @HostListener("blur", ['$event']) public blur() {
+  //   if(!this.insideKeyPress){
+  //     this.toggleDropdown = false;
+  //   }
+  // }
 
-  @HostListener("focus") public focus() {
+  // @HostListener("focus") public focus() {
     /* istanbul ignore else */
-    if (!this.disabled) {
-      this.toggleSelectDropdown();
-    }
-  }
+    // if (!this.disabled) {
+    //   this.toggleSelectDropdown();
+    // }
+  // }
   /**
    * click handler on documnent to hide the open dropdown if clicked outside
    */
-  @HostListener("document:click")
+  @HostListener("document:click", ['$event'])
   public clickOutsideComponent() {
     /* istanbul ignore else */
     if (!this.clickedInside) {
@@ -219,7 +219,7 @@ export class NgxSelectDropdownComponent
   /**
    * click handler on documnent to hide the open dropdown if clicked outside
    */
-  @HostListener("document:keydown")
+  @HostListener("document:keydown", ['$event'])
   public KeyPressOutsideComponent() {
     /* istanbul ignore else */
     if (!this.insideKeyPress) {
